@@ -10,6 +10,7 @@ Route::group(['namespace' => 'auth'], function () {
     Route::get('forgot', [App\Http\Controllers\Auth\RegisterController::class, 'forgot_the_password']);
     Route::get('activate', [App\Http\Controllers\Auth\RegisterController::class, 'activate']);
     Route::get('reset_password', [App\Http\Controllers\Auth\RegisterController::class, 'reset_password']);
+    Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
     Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
     Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login_action'])->name('login.action');
     Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
@@ -64,7 +65,3 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin', 'middleware' => ['aut
     Route::post('save_settings', [App\Http\Controllers\Admin\SettingController::class, 'save']);
 });
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
